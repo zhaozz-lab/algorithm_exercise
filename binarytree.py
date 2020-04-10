@@ -11,6 +11,7 @@ class Tree(object):
         self.root = None
     
     def add(self,val):
+        print("the val is ",val)
         node = Node(val)
         print(val)
         if self.root is None:
@@ -38,24 +39,26 @@ class Tree(object):
             self.traverse(self.right)
         
 
-    
-# class binarytree(object):
-    # def __init__(self,val=None,left=None,right=None):
-        # self.val = val
-        # self.left = left
-        # self.right = right
-    # def traverse(self,root):
-        # if root is None:
-            # return
-        # print(root.val)
-        # self.traverse(root.left)
-        # self.traverse(root.right)
+def isSameTree(tree1,tree2):
+    if tree1 is None and tree2 is None:
+        return True
+    if tree1 is None or tree2 is None:
+        return False
+    if tree1.val != tree2.val:
+        return False
+    return isSameTree(tree1.left,tree2.left) and isSameTree(tree1.right,tree2.right)
 
 
 if __name__ == '__main__':
     # testbinarytree = binarytree(10,binarytree(20),binarytree(30))
     # testbinarytree.traverse(testbinarytree)
-    testtree = Tree()
+    tree1 = Tree()
+    tree1.add(100)
+    tree1.traverse()
     for i in range(0,10):
-        testtree.add(i)
-    testtree.trvaverse()
+       tree1.add(i)
+    # test traverse   
+    tree1.trvaverse()
+    # test isSameTree
+    # tree2 = tree1
+    # print(isSameTree(tree1,tree2))
