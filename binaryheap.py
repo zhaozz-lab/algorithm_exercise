@@ -67,4 +67,3 @@ if __name__ == '__main__':
     print(student.maxPQvalue())
     print(student.delMax())
     print(student.maxPQvalue())
-
