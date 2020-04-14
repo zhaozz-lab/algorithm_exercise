@@ -1,3 +1,4 @@
+import heapq
 class User(object):
     def __init__(self,userId):
         self.userId = userId
@@ -46,21 +47,43 @@ class Twitter(object):
             n += 1
         return res
 
-        def follow(self,followerId,followerId):
-            if followeeId not in self.userMap:
-                self.userMap[followeeId] = User(followerId)
-            if followerId not in self.userMap:
-                self.userMap[followerId] = User(followerId)
-            if followerId == followeeId:
-                return
+    def follow(self,followerId,followeeId):
+        if followeeId not in self.userMap:
+            self.userMap[followeeId] = User(followerId)
+        if followerId not in self.userMap:
+            self.userMap[followerId] = User(followerId)
+        if followerId == followeeId:
+            return
 
-            followee = self.userMap[followeeId]
-            self.userMap[followerId].following.add(followee)
+        followee = self.userMap[followeeId]
+        self.userMap[followerId].following.add(followee)
 
-        def unfollow(self,followerId,followeeId):
-            if followerId == followeeId or followerId not in self.userMap or followeeId not in self.userMap:
-                return
-            followee = self.userMap 
+    def unfollow(self,followerId,followeeId):
+        if followerId == followeeId or followerId not in self.userMap or followeeId not in self.userMap:
+            return
+        followee = self.userMap[followeeId]
+        if followee in self.userMap.get(followerId).following:
+            self.userMap.get(followerId).following.remove(followee)
+
+
+if __name__ == '__main__':
+    userId = 1
+    tweetId = 10
+    followerId = 100
+    followeeId = 1
+    obj = Twitter()
+    obj.postTweet(userId,tweetId)
+    param_2 = obj.getNewsFeed(userId)
+    print(param_2)
+    obj.follow(followerId,followeeId)
+    # print(obj.userMap)
+    param_2 = obj.getNewsFeed(followerId)
+    print(param_2)
+
+    obj.unfollow(followerId,followeeId)
+    param_2 = obj.getNewsFeed(followerId)
+    print(param_2)
+
             
         
         
