@@ -12,7 +12,6 @@ def lengthofLIS(nums):
     top = [0]*n
     for i in range(0,n):
         poker = nums[i]
-        
         left,right = 0,piles
         while left < right:
             mid = int((left + right)/2)
@@ -27,7 +26,7 @@ def lengthofLIS(nums):
     return piles
 
 if __name__ == '__main__':
-    envelopes = [[1,2],[2,3]]
+    envelopes = [[1,2],[2,3],[1,3],[4,6]]
     envelop = maxEnvelopes(envelopes)
     print(envelop)
 
