@@ -24,3 +24,4 @@ if __name__ == '__main__':
     b=c
     b='2'
     print(c)
+    print([[0]*10]*10)
