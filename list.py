@@ -81,5 +81,9 @@ traverse(test2)
 
 # reverse 
 if __name__ == '__main__':
-    pass
-                   
+    import numpy as np
+    import torch
+    a = np.zeros((2,3))
+    b = torch.zeros((2,3))
+    print(a[1,2])
+    print(b[1,2])
